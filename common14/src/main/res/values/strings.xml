@@ -2,4 +2,5 @@
     <string name="app_name">common</string>
     <string name="application_logo">Logo</string>
     <string name="ndk_solutions_pvt_ltd">NDK Solutions Pvt. Ltd.</string>
+    <string name="call_permission_required">Call Permission is required…</string>
 </resources>

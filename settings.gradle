@@ -1,4 +1,3 @@
 include ':common14', ':Resources:common'
 
-include ':Utils1:common1'
-project(':Utils1:common1').projectDir = new File(settingsDir, './Utils11/Utils9/Utils7/Utils4/Utils3/Utils1/common1')
+

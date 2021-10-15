@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.google.gms.google-services'
 android {
 
     compileSdkVersion 30
@@ -11,13 +11,11 @@ android {
         minSdkVersion 14
         targetSdkVersion 30
 
-        versionCode 1
-        versionName "1.0"
 
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -108,8 +106,13 @@ dependencies {
     implementation 'com.github.kimkevin:cachepot:1.2.0'
     implementation 'org.javatuples:javatuples:1.2'
 
-    implementation project(path: ':Utils1:common1')
+
     implementation project(path: ':Resources:common')
 
     testImplementation 'junit:junit:4.13.2'
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.jetbrains:annotations:21.0.1'
 }
