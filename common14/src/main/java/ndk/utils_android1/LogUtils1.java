@@ -21,6 +21,6 @@ public class LogUtils1 {
 
             ToastUtils1.longToast(currentApplicationContext, message);
         }
-        debug(applicationTag, message);
+        debug(applicationTag, message + " on " + currentApplicationContext.getClass().getName());
     }
 }
