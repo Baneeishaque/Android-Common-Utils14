@@ -4,8 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
-
-import java.util.Objects;
+import com.google.firebase.database.GenericTypeIndicator;
 
 import ndk.utils_android14.BuildConfig;
 
@@ -19,7 +18,7 @@ public class LogUtils1 {
         }
     }
 
-    public static void debugOnGui(String message, Context currentApplicationContext, String applicationTag) {
+    public static void debugOnGui(String applicationTag, String message, Context currentApplicationContext) {
 
         if (BuildConfig.DEBUG) {
 
@@ -28,38 +27,62 @@ public class LogUtils1 {
         debug(applicationTag, message + " on " + currentApplicationContext.getClass().getName());
     }
 
-    public static void debugDataSnapshotOnGui(DataSnapshot dataSnapshot, Context currentApplicationContext, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class dataSnapshotValueClass) {
+    public static void debugDataSnapshotOnGui(DataSnapshot dataSnapshot, Context currentApplicationContext, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class dataSnapshotValueClass, boolean isGenericType, GenericTypeIndicator genericTypeIndicator) {
 
         if (dataSnapshot == null) {
-            debugOnGui("DataSnapshot is empty", currentApplicationContext, applicationTag);
+
+            debugOnGui(applicationTag, "DataSnapshot is empty", currentApplicationContext);
+
         } else {
+
             if (isDataSnapshotPrintActive) {
-                debugOnGui("DataSnapshot : " + dataSnapshot, currentApplicationContext, applicationTag);
+
+                debugOnGui(applicationTag, "DataSnapshot : " + dataSnapshot, currentApplicationContext);
             }
-            debugOnGui("DataSnapshot Exists : " + dataSnapshot.exists(), currentApplicationContext, applicationTag);
+
+            debugOnGui(applicationTag, "DataSnapshot Exists : " + dataSnapshot.exists(), currentApplicationContext);
+
             if (isKeyPrintActive) {
-                debugOnGui("DataSnapshot Key : " + dataSnapshot.getKey(), currentApplicationContext, applicationTag);
+
+                debugOnGui(applicationTag, "DataSnapshot Key : " + dataSnapshot.getKey(), currentApplicationContext);
             }
-            if (isValuePrintActive && dataSnapshot.exists()) {
-                debugOnGui("DataSnapshot Value : " + dataSnapshot.getValue(dataSnapshotValueClass), currentApplicationContext, applicationTag);
+            if (isValuePrintActive && (!isGenericType) && dataSnapshot.exists()) {
+
+                debugOnGui(applicationTag, "DataSnapshot Value : " + dataSnapshot.getValue(dataSnapshotValueClass), currentApplicationContext);
+            }
+            if (isGenericType && dataSnapshot.exists()) {
+
+                debugOnGui(applicationTag, "DataSnapshot Value : " + dataSnapshot.getValue(genericTypeIndicator), currentApplicationContext);
             }
         }
     }
 
-    public static void debugDataSnapshot(DataSnapshot dataSnapshot, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class<Object> dataSnapshotValueClass) {
+    public static void debugDataSnapshot(DataSnapshot dataSnapshot, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class<Object> dataSnapshotValueClass, boolean isGenericType, GenericTypeIndicator genericTypeIndicator) {
 
         if (dataSnapshot == null) {
+
             debug(applicationTag, "DataSnapshot is empty");
+
         } else {
+
             if (isDataSnapshotPrintActive) {
+
                 debug(applicationTag, "DataSnapshot : " + dataSnapshot);
             }
+
             debug(applicationTag, "DataSnapshot Exists : " + dataSnapshot.exists());
+
             if (isKeyPrintActive) {
+
                 debug(applicationTag, "DataSnapshot Key : " + dataSnapshot.getKey());
             }
-            if (isValuePrintActive) {
-                debug(applicationTag, "DataSnapshot Value : " + Objects.requireNonNull(dataSnapshot.getValue(dataSnapshotValueClass)));
+            if (isValuePrintActive && (!isGenericType) && dataSnapshot.exists()) {
+
+                debug(applicationTag, "DataSnapshot Value : " + dataSnapshot.getValue(dataSnapshotValueClass));
+            }
+            if (isGenericType && dataSnapshot.exists()) {
+
+                debug(applicationTag, "DataSnapshot Value : " + dataSnapshot.getValue(genericTypeIndicator));
             }
         }
     }

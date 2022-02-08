@@ -22,7 +22,7 @@ public class ExceptionUtils1 {
 
             //TODO : Short Toast
             ToastUtils1.errorToast(applicationContext, tag);
-            LogUtils1.debugOnGui(exceptionDetails, applicationContext, tag);
+            LogUtils1.debugOnGui(tag, exceptionDetails, applicationContext);
 
         } else {
 

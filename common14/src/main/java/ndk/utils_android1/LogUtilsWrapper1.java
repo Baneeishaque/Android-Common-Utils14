@@ -13,7 +13,7 @@ public abstract class LogUtilsWrapper1 {
 
     public void debugOnGui(String message) {
 
-        LogUtils1.debugOnGui(message, configureCurrentApplicationContext(), configureApplicationTag());
+        LogUtils1.debugOnGui(configureApplicationTag(), message, configureCurrentApplicationContext());
     }
 
     public abstract Context configureCurrentApplicationContext();
