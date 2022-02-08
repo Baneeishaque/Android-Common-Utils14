@@ -28,7 +28,7 @@ public class LogUtils1 {
         debug(applicationTag, message + " on " + currentApplicationContext.getClass().getName());
     }
 
-    public static void debugDataSnapshotOnGui(DataSnapshot dataSnapshot, Context currentApplicationContext, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, Class dataSnapshotValueClass) {
+    public static void debugDataSnapshotOnGui(DataSnapshot dataSnapshot, Context currentApplicationContext, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class dataSnapshotValueClass) {
 
         if (dataSnapshot == null) {
             debugOnGui("DataSnapshot is empty", currentApplicationContext, applicationTag);
@@ -40,11 +40,13 @@ public class LogUtils1 {
             if (isKeyPrintActive) {
                 debugOnGui("DataSnapshot Key : " + dataSnapshot.getKey(), currentApplicationContext, applicationTag);
             }
-            debugOnGui("DataSnapshot Value : " + Objects.requireNonNull(dataSnapshot.getValue(dataSnapshotValueClass)), currentApplicationContext, applicationTag);
+            if (isValuePrintActive && dataSnapshot.exists()) {
+                debugOnGui("DataSnapshot Value : " + dataSnapshot.getValue(dataSnapshotValueClass), currentApplicationContext, applicationTag);
+            }
         }
     }
 
-    public static void debugDataSnapshot(DataSnapshot dataSnapshot, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, Class<Object> dataSnapshotValueClass) {
+    public static void debugDataSnapshot(DataSnapshot dataSnapshot, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class<Object> dataSnapshotValueClass) {
 
         if (dataSnapshot == null) {
             debug(applicationTag, "DataSnapshot is empty");
@@ -56,7 +58,9 @@ public class LogUtils1 {
             if (isKeyPrintActive) {
                 debug(applicationTag, "DataSnapshot Key : " + dataSnapshot.getKey());
             }
-            debug(applicationTag, "DataSnapshot Value : " + Objects.requireNonNull(dataSnapshot.getValue(dataSnapshotValueClass)));
+            if (isValuePrintActive) {
+                debug(applicationTag, "DataSnapshot Value : " + Objects.requireNonNull(dataSnapshot.getValue(dataSnapshotValueClass)));
+            }
         }
     }
 }

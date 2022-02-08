@@ -21,7 +21,7 @@ public class ExceptionUtils1 {
         if (isGuiPresent) {
 
             //TODO : Short Toast
-            ToastUtils1.longToast(applicationContext, "Error...");
+            ToastUtils1.errorToast(applicationContext, tag);
             LogUtils1.debugOnGui(exceptionDetails, applicationContext, tag);
 
         } else {
