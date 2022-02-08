@@ -15,8 +15,9 @@ public class ToastUtils1 {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-    public static void errorToast(Context context) {
+    public static void errorToast(Context context, String applicationName) {
         longToast(context, "Error...");
+        LogUtils1.debug(applicationName, "Error...");
     }
 
     public static void offlineToast(Context context) {
