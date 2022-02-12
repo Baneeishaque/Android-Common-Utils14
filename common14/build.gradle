@@ -99,7 +99,6 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:29.0.4')
     implementation 'com.google.firebase:firebase-database'
-    implementation 'com.google.firebase:firebase-firestore'
 
     implementation 'com.github.kimkevin:cachepot:1.2.0'
     implementation 'org.javatuples:javatuples:1.2'
