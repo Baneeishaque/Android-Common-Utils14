@@ -41,6 +41,11 @@ public class VolleyUtils {
         performVolleyStringGetRequestOfNoRetriesAndResolvedIn5Seconds(currentActivityContext, volleyRequestUrl, volleyStringRequestSuccessResponseActions, volleyRequestErrorResponseActions, null, applicationName);
     }
 
+    public static void performVolleyJsonObjectGetRequestOfNoRetriesResolvedIn5SecondsAndWithoutParameters(Context currentActivityContext, String volleyRequestUrl, @NonNull VolleyJsonObjectRequestSuccessResponseActions volleyJsonObjectRequestSuccessResponseActions, @NonNull VolleyRequestErrorResponseActions volleyRequestErrorResponseActions, String applicationName) {
+
+        performVolleyJsonObjectGetRequestOfNoRetriesAndResolvedIn5Seconds(currentActivityContext, volleyRequestUrl, volleyJsonObjectRequestSuccessResponseActions, volleyRequestErrorResponseActions, null, applicationName);
+    }
+
     public static void performVolleyStringPostRequestOfNoRetriesAndResolvedIn5Seconds(Context currentActivityContext, String volleyRequestUrl, @NonNull VolleyStringRequestSuccessResponseActions volleyStringRequestSuccessResponseActions, @NonNull VolleyRequestErrorResponseActions volleyRequestErrorResponseActions, HashMap<String, String> volleyRequestParameters, String applicationName) {
 
         performVolleyStringRequestOfNoRetriesAndResolvedIn5Seconds(currentActivityContext, Request.Method.POST, volleyRequestUrl, volleyStringRequestSuccessResponseActions, volleyRequestErrorResponseActions, volleyRequestParameters, applicationName);
@@ -90,7 +95,7 @@ public class VolleyUtils {
         JsonObjectRequest jsonObjectRequest;
         if (volleyRequestMethod == Request.Method.GET) {
 
-            if (volleyRequestParameters.size() > 0) {
+            if (volleyRequestParameters != null && volleyRequestParameters.size() > 0) {
 
                 jsonObjectRequest = constructJsonObjectRequest(currentActivityContext, volleyRequestMethod, generateGetUrlWithParameters(volleyRequestUrl, volleyRequestParameters).toString(), volleyJsonObjectRequestSuccessResponseActions, volleyRequestErrorResponseActions, null, applicationName);
 
