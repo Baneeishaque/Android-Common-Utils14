@@ -30,7 +30,7 @@ steps:
       path: $(Build.SourcesDirectory)/.gradle
     displayName: Project Specific Gradle Cache
     
-  - task: JavaToolInstaller@0
+  - task: JavaToolInstaller@0.209.0
     inputs:
       versionSpec: '11'
       jdkArchitectureOption: 'x64'
