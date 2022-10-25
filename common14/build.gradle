@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.google.gms.google-services'
 android {
 
+    namespace 'ndk.utils_android14'
+
     compileSdkVersion 31
     buildToolsVersion '30.0.3'
     useLibrary 'org.apache.http.legacy'
