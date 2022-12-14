@@ -44,7 +44,7 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
     private String applicationName;
 
-    private Context context;
+    private Context currentActivityContext;
 
     private View progressBar;
     private View form;
@@ -78,10 +78,10 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
     NoEntriesActions noEntriesActions;
 
-    public HttpApiSelectTask14(String url, Pair[] nameValuePairs, Context context, View progressBar, View form, String applicationName, AsyncResponseJSONArray asyncResponseJSONArray, NoEntriesActions noEntriesActions) {
+    public HttpApiSelectTask14(String url, Pair[] nameValuePairs, Context currentActivityContext, View progressBar, View form, String applicationName, AsyncResponseJSONArray asyncResponseJSONArray, NoEntriesActions noEntriesActions) {
 
         this.url = url;
-        this.context = context;
+        this.currentActivityContext = currentActivityContext;
         this.progressBar = progressBar;
         this.form = form;
         this.applicationName = applicationName;
@@ -90,10 +90,10 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
         this.noEntriesActions = noEntriesActions;
     }
 
-    public HttpApiSelectTask14(String url, Pair[] nameValuePairs, Context context, View progressBar, View form, String applicationName, AsyncResponseJSONArray asyncResponseJSONArray, String customizedNoEntriesMessage, NoEntriesActions noEntriesActions) {
+    public HttpApiSelectTask14(String url, Pair[] nameValuePairs, Context currentActivityContext, View progressBar, View form, String applicationName, AsyncResponseJSONArray asyncResponseJSONArray, String customizedNoEntriesMessage, NoEntriesActions noEntriesActions) {
 
         this.url = url;
-        this.context = context;
+        this.currentActivityContext = currentActivityContext;
         this.progressBar = progressBar;
         this.form = form;
         this.applicationName = applicationName;
@@ -104,10 +104,10 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
         this.noEntriesActions = noEntriesActions;
     }
 
-    public HttpApiSelectTask14(String url, Context context, View progressBar, View form, String applicationName, AsyncResponseJSONArray asyncResponseJSONArray, NoEntriesActions noEntriesActions) {
+    public HttpApiSelectTask14(String url, Context currentActivityContext, View progressBar, View form, String applicationName, AsyncResponseJSONArray asyncResponseJSONArray, NoEntriesActions noEntriesActions) {
 
         this.url = url;
-        this.context = context;
+        this.currentActivityContext = currentActivityContext;
         this.progressBar = progressBar;
         this.form = form;
         this.applicationName = applicationName;
@@ -115,10 +115,10 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
         this.noEntriesActions = noEntriesActions;
     }
 
-    public HttpApiSelectTask14(String url, Pair[] nameValuePairs, Context context, View progressBar, View form, String applicationName, AsyncResponseJSONArray asyncResponseJSONArray, boolean isStatusCheckOnAsyncResponseJsonArrayFirstElementEnabled, NoEntriesActions noEntriesActions) {
+    public HttpApiSelectTask14(String url, Pair[] nameValuePairs, Context currentActivityContext, View progressBar, View form, String applicationName, AsyncResponseJSONArray asyncResponseJSONArray, boolean isStatusCheckOnAsyncResponseJsonArrayFirstElementEnabled, NoEntriesActions noEntriesActions) {
 
         this.url = url;
-        this.context = context;
+        this.currentActivityContext = currentActivityContext;
         this.progressBar = progressBar;
         this.form = form;
         this.applicationName = applicationName;
@@ -128,10 +128,10 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
         this.noEntriesActions = noEntriesActions;
     }
 
-    public HttpApiSelectTask14(String url, Pair[] nameValuePairs, Context context, View progressBar, View form, String applicationName, AsyncResponseJSONObject asyncResponseJSONObject, NoEntriesActions noEntriesActions) {
+    public HttpApiSelectTask14(String url, Pair[] nameValuePairs, Context currentActivityContext, View progressBar, View form, String applicationName, AsyncResponseJSONObject asyncResponseJSONObject, NoEntriesActions noEntriesActions) {
 
         this.url = url;
-        this.context = context;
+        this.currentActivityContext = currentActivityContext;
         this.progressBar = progressBar;
         this.form = form;
         this.applicationName = applicationName;
@@ -141,10 +141,10 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
         this.noEntriesActions = noEntriesActions;
     }
 
-    public HttpApiSelectTask14(String url, ArrayList<org.javatuples.Pair<String, String>> nameValuePairsInJavaTuples, Context context, View progressBar, View form, String applicationName, AsyncResponseJSONObject asyncResponseJSONObject, NoEntriesActions noEntriesActions) {
+    public HttpApiSelectTask14(String url, ArrayList<org.javatuples.Pair<String, String>> nameValuePairsInJavaTuples, Context currentActivityContext, View progressBar, View form, String applicationName, AsyncResponseJSONObject asyncResponseJSONObject, NoEntriesActions noEntriesActions) {
 
         this.url = url;
-        this.context = context;
+        this.currentActivityContext = currentActivityContext;
         this.progressBar = progressBar;
         this.form = form;
         this.applicationName = applicationName;
@@ -160,12 +160,12 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
         if (isJavaTuplesUsedForNameValuePairs) {
 
-            LogUtils1.debug(applicationName, "Url : " + url + "\n" + HttpPostUtils14.toStringOnNameValuePairsInJavaTuples(nameValuePairsInJavaTuples));
+            LogUtils1.debug(applicationName, "Url : " + url + "\n" + HttpPostUtils14.toStringOnNameValuePairsInJavaTuples(nameValuePairsInJavaTuples), currentActivityContext);
             return NetworkUtils14.performHttpClientPostTask(url, nameValuePairsInJavaTuples);
 
         } else {
 
-            LogUtils1.debug(applicationName, "Url : " + url + "\n" + HttpPostUtils14.toStringOnNameValuePairs(nameValuePairs));
+            LogUtils1.debug(applicationName, "Url : " + url + "\n" + HttpPostUtils14.toStringOnNameValuePairs(nameValuePairs), currentActivityContext);
             return NetworkUtils14.performHttpClientPostTask(url, nameValuePairs);
         }
     }
@@ -174,7 +174,7 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
         if (progressFlag == 0) {
 
-            ProgressBarUtils1.showProgress(false, context, progressBar, form);
+            ProgressBarUtils1.showProgress(false, currentActivityContext, progressBar, form);
         }
 
         if (responseFlag == 1) {
@@ -184,7 +184,7 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
             if (networkActionResponseArray[0].equals("1")) {
 
-                NetworkUtils1.displayFriendlyExceptionMessage(context, networkActionResponseArray[1]);
+                NetworkUtils1.displayFriendlyExceptionMessage(currentActivityContext, networkActionResponseArray[1]);
                 Log.d(applicationName, "Network Action response is " + networkActionResponseArray[1]);
                 asyncResponse.processFinish("exception");
 
@@ -200,7 +200,7 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
             if (networkActionResponseArray[0].equals("1")) {
 
-                NetworkUtils1.displayFriendlyExceptionMessage(context, networkActionResponseArray[1]);
+                NetworkUtils1.displayFriendlyExceptionMessage(currentActivityContext, networkActionResponseArray[1]);
                 Log.d(applicationName, "Network Action response is " + networkActionResponseArray[1]);
 
             } else {
@@ -212,7 +212,7 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
                 } catch (JSONException var3) {
 
-                    ToastUtils1.longToast(context, "Error...");
+                    ToastUtils1.longToast(currentActivityContext, "Error...");
                     Log.d(applicationName, "Error : " + var3.getLocalizedMessage());
                 }
             }
@@ -229,14 +229,14 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
                 } else {
 
-                    ToastUtils1.longToast(context, "Error...");
+                    ToastUtils1.longToast(currentActivityContext, "Error...");
                 }
 
                 Log.d(applicationName, "Network Action Response Array 1 : " + networkActionResponseArray[1]);
 
                 if (splashFlag == 1) {
 
-                    ((AppCompatActivity) context).finish();
+                    ((AppCompatActivity) currentActivityContext).finish();
                 }
 
             } else {
@@ -251,8 +251,8 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
                             case "1":
 
-                                ToastUtils1.longToast(context, "Error...");
-                                LogUtils1.debug(applicationName, "Error : " + json_array.getJSONObject(0).getInt("error_number") + ", " + json_array.getJSONObject(0).getInt("error"));
+                                ToastUtils1.longToast(currentActivityContext, "Error...");
+                                LogUtils1.debug(applicationName, "Error : " + json_array.getJSONObject(0).getInt("error_number") + ", " + json_array.getJSONObject(0).getInt("error"), currentActivityContext);
                                 break;
 
                             case "2":
@@ -261,21 +261,21 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
                                     if (isCustomizedNoEntriesMessagePresent) {
 
-                                        LogUtils1.debug(applicationName, customizedNoEntriesMessage);
+                                        LogUtils1.debug(applicationName, customizedNoEntriesMessage, currentActivityContext);
 
                                     } else {
 
-                                        LogUtils1.debug(applicationName, "No Entries...");
+                                        LogUtils1.debug(applicationName, "No Entries...", currentActivityContext);
                                     }
                                 } else {
 
                                     if (isCustomizedNoEntriesMessagePresent) {
 
-                                        ToastUtils1.longToast(context, customizedNoEntriesMessage);
+                                        ToastUtils1.longToast(currentActivityContext, customizedNoEntriesMessage);
 
                                     } else {
 
-                                        ToastUtils1.longToast(context, "No Entries...");
+                                        ToastUtils1.longToast(currentActivityContext, "No Entries...");
                                     }
 
                                 }
@@ -289,8 +289,8 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
                             default:
 
-                                ToastUtils1.longToast(context, "Error...");
-                                LogUtils1.debug(applicationName, "Response : " + json_array);
+                                ToastUtils1.longToast(currentActivityContext, "Error...");
+                                LogUtils1.debug(applicationName, "Response : " + json_array, currentActivityContext);
                                 break;
                         }
                     } else {
@@ -300,8 +300,8 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
                 } catch (JSONException e) {
 
-                    ToastUtils1.longToast(context, "Error...");
-                    LogUtils1.debug(applicationName, "Error : " + e.getLocalizedMessage());
+                    ToastUtils1.longToast(currentActivityContext, "Error...");
+                    LogUtils1.debug(applicationName, "Error : " + e.getLocalizedMessage(), currentActivityContext);
                 }
             }
         }
@@ -311,7 +311,7 @@ public class HttpApiSelectTask14 extends AsyncTask<Void, Void, String[]> {
 
         if (progressFlag == 0) {
 
-            ProgressBarUtils1.showProgress(false, context, progressBar, form);
+            ProgressBarUtils1.showProgress(false, currentActivityContext, progressBar, form);
         }
     }
 

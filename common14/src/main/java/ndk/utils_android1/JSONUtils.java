@@ -7,13 +7,13 @@ import org.json.JSONException;
 
 public class JSONUtils {
 
-    public static void printIndexedJSONArrayWithLength(JSONArray jsonArray, String jsonArrayName, String applicationName, Context context) {
+    public static void printIndexedJSONArrayWithLength(JSONArray jsonArray, String jsonArrayName, String applicationName, Context currentActivityContext) {
 
-        LogUtils1.debug(applicationName, "Length of " + jsonArrayName + " : " + jsonArray.length());
-        printIndexedJSONArray(jsonArray, jsonArrayName, applicationName, context);
+        LogUtils1.debug(applicationName, "Length of " + jsonArrayName + " : " + jsonArray.length(), currentActivityContext);
+        printIndexedJSONArray(jsonArray, jsonArrayName, applicationName, currentActivityContext);
     }
 
-    private static void printIndexedJSONArray(JSONArray jsonArray, String jsonArrayName, String applicationName, Context context) {
+    private static void printIndexedJSONArray(JSONArray jsonArray, String jsonArrayName, String applicationName, Context currentActivityContext) {
 
         StringBuilder result = new StringBuilder();
 
@@ -25,10 +25,10 @@ public class JSONUtils {
                     result.append("\n").append("[").append(i).append("] ").append(jsonArray.getJSONObject(i).toString());
                 }
             } catch (JSONException e) {
-                ErrorUtils.displayException(context, e, applicationName);
+                ErrorUtils.displayException(currentActivityContext, e, applicationName);
             }
         }
 
-        LogUtils1.debug(applicationName, "Indexed " + jsonArrayName + " : " + result);
+        LogUtils1.debug(applicationName, "Indexed " + jsonArrayName + " : " + result, currentActivityContext);
     }
 }

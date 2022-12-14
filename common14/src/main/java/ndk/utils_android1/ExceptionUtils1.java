@@ -26,7 +26,7 @@ public class ExceptionUtils1 {
 
         } else {
 
-            LogUtils1.debug(tag, exceptionDetails);
+            LogUtils1.debug(tag, exceptionDetails, applicationContext);
         }
     }
 

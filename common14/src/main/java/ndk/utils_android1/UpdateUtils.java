@@ -40,7 +40,7 @@ public class UpdateUtils {
 
     }
 
-    public static String[] getFlavouredServerVersion(String flavour, String fullVersionCheckUrl, String applicationName) {
+    public static String[] getFlavouredServerVersion(String flavour, String fullVersionCheckUrl, String applicationName, Context currentApplicationContext) {
 
         String networkActionResponse;
         try {
@@ -53,7 +53,7 @@ public class UpdateUtils {
 
             ResponseHandler<String> basicResponseHandler = new BasicResponseHandler();
             networkActionResponse = defaultHttpClient.execute(httpPost, basicResponseHandler);
-            LogUtils1.debug(applicationName, "Network Action Response : " + networkActionResponse);
+            LogUtils1.debug(applicationName, "Network Action Response : " + networkActionResponse, currentApplicationContext);
             return new String[]{"0", networkActionResponse};
 
         } catch (UnsupportedEncodingException e) {
@@ -65,7 +65,7 @@ public class UpdateUtils {
         }
     }
 
-    public static String[] getServerVersion(String fullVersionCheckUrl, String applicationName) {
+    public static String[] getServerVersion(String fullVersionCheckUrl, String applicationName, Context currentApplicationContext) {
 
         String networkActionResponse;
         try {
@@ -75,7 +75,7 @@ public class UpdateUtils {
 
             ResponseHandler<String> basicResponseHandler = new BasicResponseHandler();
             networkActionResponse = defaultHttpClient.execute(httpPost, basicResponseHandler);
-            LogUtils1.debug(applicationName, "Network Action Response : " + networkActionResponse);
+            LogUtils1.debug(applicationName, "Network Action Response : " + networkActionResponse, currentApplicationContext);
             return new String[]{"0", networkActionResponse};
 
         } catch (UnsupportedEncodingException e) {

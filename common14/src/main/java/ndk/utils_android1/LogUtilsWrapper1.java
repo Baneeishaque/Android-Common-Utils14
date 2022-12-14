@@ -6,7 +6,7 @@ public abstract class LogUtilsWrapper1 {
 
     public void debug(String message) {
 
-        LogUtils1.debug(configureApplicationTag(), message);
+        LogUtils1.debug(configureApplicationTag(), message, configureCurrentApplicationContext());
     }
 
     public abstract String configureApplicationTag();

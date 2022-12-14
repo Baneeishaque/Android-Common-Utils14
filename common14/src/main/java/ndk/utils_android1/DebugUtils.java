@@ -1,11 +1,12 @@
 package ndk.utils_android1;
 
-import ndk.utils_android14.BuildConfig;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
 
 public class DebugUtils {
 
-    public static boolean isDebugBuild() {
+    public static boolean isDebugBuild(Context currentApplicationContext) {
 
-        return BuildConfig.DEBUG;
+        return (0 != (currentApplicationContext.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
     }
 }

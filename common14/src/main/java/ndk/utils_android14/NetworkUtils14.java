@@ -47,13 +47,13 @@ public class NetworkUtils14 {
 
         NetworkUtils14.furtherActions = furtherActions;
 
-        LogUtils1.debug(tag, "Network Action Response Index 0 : " + networkActionResponseArray[0]);
-        LogUtils1.debug(tag, "Network Action Response Index 1 : " + networkActionResponseArray[1]);
+        LogUtils1.debug(tag, "Network Action Response Index 0 : " + networkActionResponseArray[0], currentActivity);
+        LogUtils1.debug(tag, "Network Action Response Index 1 : " + networkActionResponseArray[1], currentActivity);
 
         if (networkActionResponseArray[0].equals("1")) {
 
             Toast.makeText(currentActivity, "Error...", Toast.LENGTH_LONG).show();
-            LogUtils1.debug(tag, "Error, Network Action Response Index 1 : " + networkActionResponseArray[1]);
+            LogUtils1.debug(tag, "Error, Network Action Response Index 1 : " + networkActionResponseArray[1], currentActivity);
 
         } else {
 
@@ -85,12 +85,12 @@ public class NetworkUtils14 {
                                 break;
 
                             case 5: // No Action
-                                LogUtils1.debug(tag, "Further Action...");
+                                LogUtils1.debug(tag, "Further Action...", currentActivity);
                                 furtherActions.onSuccess();
                                 break;
 
                             case 6: // clear fields & further actions
-                                LogUtils1.debug(tag, "Further Action...");
+                                LogUtils1.debug(tag, "Further Action...", currentActivity);
                                 TextClearUtils.resetFields(editTextsToClear);
                                 furtherActions.onSuccess();
                                 break;
@@ -99,17 +99,17 @@ public class NetworkUtils14 {
 
                     case "1":
                         Toast.makeText(currentActivity, "Error...", Toast.LENGTH_LONG).show();
-                        LogUtils1.debug(tag, "Error : " + json.getString("error"));
+                        LogUtils1.debug(tag, "Error : " + json.getString("error"), currentActivity);
                         viewToFocusOnError.requestFocus();
                         break;
 
                     default:
                         Toast.makeText(currentActivity, "Error...", Toast.LENGTH_LONG).show();
-                        LogUtils1.debug(tag, "Error : Application_Utils json");
+                        LogUtils1.debug(tag, "Error : Application_Utils json", currentActivity);
                 }
             } catch (JSONException e) {
                 Toast.makeText(currentActivity, "Error...", Toast.LENGTH_LONG).show();
-                LogUtils1.debug(tag, "Error : " + e.getLocalizedMessage());
+                LogUtils1.debug(tag, "Error : " + e.getLocalizedMessage(), currentActivity);
             }
         }
     }
