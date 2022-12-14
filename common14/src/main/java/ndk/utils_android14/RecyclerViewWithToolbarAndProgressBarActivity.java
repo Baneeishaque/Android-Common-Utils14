@@ -33,11 +33,11 @@ public abstract class RecyclerViewWithToolbarAndProgressBarActivity extends Acti
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recyclerview_with_toolbar_and_progressbar);
+        setContentView(ndk.utils_android_resources.R.layout.recyclerview_with_toolbar_and_progressbar);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        recyclerView = findViewById(R.id.recyclerView);
-        progressBar = findViewById(R.id.progressBar);
+        Toolbar toolbar = findViewById(ndk.utils_android_resources.R.id.toolbar);
+        recyclerView = findViewById(ndk.utils_android_resources.R.id.recyclerView);
+        progressBar = findViewById(ndk.utils_android_resources.R.id.progressBar);
 
         setSupportActionBar(toolbar);
 
@@ -89,9 +89,9 @@ public abstract class RecyclerViewWithToolbarAndProgressBarActivity extends Acti
 
         super.onCreateOptionsMenu(menu);
 
-        getMenuInflater().inflate(R.menu.menu_search, menu);
+        getMenuInflater().inflate(ndk.utils_android_resources.R.menu.menu_search, menu);
 
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(ndk.utils_android_resources.R.id.action_search));
         SearchManager searchManager = (SearchManager) this.getSystemService(SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager != null ? searchManager.getSearchableInfo(this.getComponentName()) : null);
 
