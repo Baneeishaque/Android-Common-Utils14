@@ -4,14 +4,13 @@ android {
 
     namespace 'ndk.utils_android14'
 
-    compileSdkVersion 31
-    buildToolsVersion '30.0.3'
+    compileSdk 33
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
 
         minSdkVersion 14
-        targetSdkVersion 31
+        targetSdkVersion 33
 
         multiDexEnabled true
 
