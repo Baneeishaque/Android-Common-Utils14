@@ -2,11 +2,14 @@ package ndk.utils_android1;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+
 import java.util.Arrays;
 
 public class ExceptionUtils1 {
 
-    public static String getExceptionDetails(Exception e) {
+    @NonNull
+    public static String getExceptionDetails(@NonNull Exception e) {
 
         return "Exception Message : " + e.getLocalizedMessage()
                 + "\n" + "Exception Code : " + e.hashCode()
