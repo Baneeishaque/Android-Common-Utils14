@@ -12,7 +12,7 @@ public class LogUtils1 {
 
         if (DebugUtils.isDebugBuild(currentApplicationContext)) {
 
-            Log.d(tag, message);
+            Log.d(tag, message + " on " + currentApplicationContext.getClass().getName());
         }
     }
 
@@ -22,7 +22,7 @@ public class LogUtils1 {
 
             ToastUtils1.longToast(currentApplicationContext, message);
         }
-        debug(applicationTag, message + " on " + currentApplicationContext.getClass().getName(), currentApplicationContext);
+        debug(applicationTag, message, currentApplicationContext);
     }
 
     public static void debugDataSnapshotOnGui(DataSnapshot dataSnapshot, Context currentApplicationContext, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class dataSnapshotValueClass, boolean isGenericType, GenericTypeIndicator genericTypeIndicator) {
