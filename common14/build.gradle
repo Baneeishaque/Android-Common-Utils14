@@ -1,4 +1,8 @@
 apply plugin: 'com.android.library'
+apply plugin:  'maven-publish'
+
+group = 'com.github.Baneeishaque'
+version = '1.0'
 
 android {
 
@@ -107,4 +111,17 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.findByName('release')
+                groupId = 'com.github.Baneeishaque'
+                artifactId = 'Android-Common-Utils14'
+                version = '1.0'
+            }
+        }
+    }
 }
