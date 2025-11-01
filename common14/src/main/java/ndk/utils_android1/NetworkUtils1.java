@@ -25,11 +25,12 @@ public class NetworkUtils1 {
 
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm != null ? cm.getActiveNetworkInfo() : null;
-        if (!(netInfo != null && netInfo.isConnectedOrConnecting())) {
+        boolean isConnected = netInfo != null && netInfo.isConnectedOrConnecting();
+        if (!(isConnected)) {
 
             ToastUtils1.longToast(context, "Internet is unavailable");
         }
-        return netInfo != null && netInfo.isConnectedOrConnecting();
+        return isConnected;
     }
 
     public static String[] performHttpClientGetTask(String url) {
