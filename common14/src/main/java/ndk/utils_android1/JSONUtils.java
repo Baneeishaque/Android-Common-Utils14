@@ -25,8 +25,8 @@ public class JSONUtils {
                     result.append("\n").append("[").append(i).append("] ").append(jsonArray.getJSONObject(i).toString());
                 }
             } catch (JSONException e) {
-                ErrorUtils.displayException(currentActivityContext, e, applicationName);
 
+                ExceptionUtils1.handleExceptionOnGui(currentActivityContext, applicationName, e);
             }
         }
 
