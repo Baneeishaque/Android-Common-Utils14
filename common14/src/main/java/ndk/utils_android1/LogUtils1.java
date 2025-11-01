@@ -25,6 +25,18 @@ public class LogUtils1 {
         debug(applicationTag, message, currentApplicationContext);
     }
 
+    public static void extendedDebug(String tag, String message, Context currentApplicationContext, boolean isGuiAvailable) {
+
+        if (isGuiAvailable) {
+
+            debugOnGui(tag, message, currentApplicationContext);
+
+        } else {
+
+            debug(tag, message, currentApplicationContext);
+        }
+    }
+
     public static <T> void debugDataSnapshotOnGui(DataSnapshot dataSnapshot, Context currentApplicationContext, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class<T> dataSnapshotValueClass, boolean isGenericType, GenericTypeIndicator<T> genericTypeIndicator) {
 
         if (dataSnapshot == null) {
