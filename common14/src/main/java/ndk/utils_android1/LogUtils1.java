@@ -25,7 +25,7 @@ public class LogUtils1 {
         debug(applicationTag, message, currentApplicationContext);
     }
 
-    public static void debugDataSnapshotOnGui(DataSnapshot dataSnapshot, Context currentApplicationContext, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class dataSnapshotValueClass, boolean isGenericType, GenericTypeIndicator genericTypeIndicator) {
+    public static <T> void debugDataSnapshotOnGui(DataSnapshot dataSnapshot, Context currentApplicationContext, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class<T> dataSnapshotValueClass, boolean isGenericType, GenericTypeIndicator<T> genericTypeIndicator) {
 
         if (dataSnapshot == null) {
 
@@ -55,7 +55,7 @@ public class LogUtils1 {
         }
     }
 
-    public static void debugDataSnapshot(DataSnapshot dataSnapshot, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class<Object> dataSnapshotValueClass, boolean isGenericType, GenericTypeIndicator genericTypeIndicator, Context currentApplicationContext) {
+    public static <T> void debugDataSnapshot(DataSnapshot dataSnapshot, String applicationTag, boolean isDataSnapshotPrintActive, boolean isKeyPrintActive, boolean isValuePrintActive, Class<Object> dataSnapshotValueClass, boolean isGenericType, GenericTypeIndicator<T> genericTypeIndicator, Context currentApplicationContext) {
 
         if (dataSnapshot == null) {
 
