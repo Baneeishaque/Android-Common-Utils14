@@ -54,6 +54,7 @@ public class UpdateUtils {
 
     public static String[] getFlavouredServerVersion(String flavour, String fullVersionCheckUrl, String applicationName, Context currentApplicationContext, boolean isGuiAvailable) {
 
+        // TODO: Use Utils
         String networkActionResponse;
         try {
             DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
@@ -80,6 +81,7 @@ public class UpdateUtils {
 
         LogUtils1.extendedDebug(applicationName, "URL : " + fullVersionCheckUrl, currentApplicationContext, isGuiAvailable);
 
+        // TODO: Use Utils
         String networkActionResponse;
         try {
             DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
