@@ -16,6 +16,7 @@ public class ToastUtils1 {
     }
 
     public static void errorToast(Context currentApplicationContext, String applicationName) {
+
         longToast(currentApplicationContext, "Error...");
         LogUtils1.debug(applicationName, "Error...", currentApplicationContext);
     }

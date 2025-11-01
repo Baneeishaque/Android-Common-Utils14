@@ -21,23 +21,27 @@ public class UpdateUtils {
     public static int getVersionCode(Context context) {
         PackageManager pm = context.getPackageManager();
         try {
+
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
             return pi.versionCode;
         } catch (PackageManager.NameNotFoundException ex) {
+
             return 0;
         }
-
     }
 
     public static float getVersionName(Context context) {
+
         PackageManager pm = context.getPackageManager();
         try {
+
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
             return Float.parseFloat(pi.versionName);
+
         } catch (PackageManager.NameNotFoundException ex) {
+
             return 0;
         }
-
     }
 
     public static String[] getFlavouredServerVersion(String flavour, String fullVersionCheckUrl, String applicationName, Context currentApplicationContext) {
@@ -79,10 +83,15 @@ public class UpdateUtils {
             return new String[]{"0", networkActionResponse};
 
         } catch (UnsupportedEncodingException e) {
+
             return new String[]{"1", "UnsupportedEncodingException : " + e.getLocalizedMessage()};
+
         } catch (ClientProtocolException e) {
+
             return new String[]{"1", "ClientProtocolException : " + e.getLocalizedMessage()};
+
         } catch (IOException e) {
+
             return new String[]{"1", "IOException : " + e.getLocalizedMessage()};
         }
     }

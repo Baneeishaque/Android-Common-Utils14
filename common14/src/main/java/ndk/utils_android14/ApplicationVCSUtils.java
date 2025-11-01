@@ -15,6 +15,7 @@ import ndk.utils_android1.ToastUtils1;
 
 public class ApplicationVCSUtils {
 
+
     public static void downloadAndInstallApk(String applicationName, float versionName, String updateUrl, final Context currentActivityContext) {
 
         //TODO : Use Permission Utils
@@ -28,6 +29,7 @@ public class ApplicationVCSUtils {
         //Delete update file if exists
         File file = new File(destination);
         if (file.exists()) {
+
             if (!file.delete()) {
 
                 String DELETION_FAILURE_PLEASE_CLEAR_YOUR_DOWNLOADS = "Deletion failure, please clear your downloads...";

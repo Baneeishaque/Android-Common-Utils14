@@ -26,6 +26,7 @@ public class JSONUtils {
                 }
             } catch (JSONException e) {
                 ErrorUtils.displayException(currentActivityContext, e, applicationName);
+
             }
         }
 
