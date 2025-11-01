@@ -23,7 +23,6 @@ public class ExceptionUtils1 {
 
         if (isGuiPresent) {
 
-            //TODO : Short Toast
             ToastUtils1.errorToast(applicationContext, tag);
             LogUtils1.debugOnGui(tag, exceptionDetails, applicationContext);
 

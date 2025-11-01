@@ -19,14 +19,11 @@ public class ApplicationVCSUtils {
     public static void downloadAndInstallApk(String applicationName, float versionName, String updateUrl, final Context currentActivityContext) {
 
         //TODO : Use Permission Utils
-        //get destination to update file and set Uri.
-        //Download directory in external storage.
         String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
         String fileName = applicationName + "_" + versionName + ".apk";
         destination += fileName;
         final Uri uri = Uri.parse("file://" + destination);
 
-        //Delete update file if exists
         File file = new File(destination);
         if (file.exists()) {
 
@@ -38,21 +35,16 @@ public class ApplicationVCSUtils {
             }
         }
 
-        //get url of app on server
-        //set download manager
         LogUtils1.debug(applicationName, "Update URL : " + updateUrl, currentActivityContext);
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(updateUrl));
         request.setDescription("Downloading Update...");
         request.setTitle(applicationName + " " + versionName);
 
-        //set destination
         request.setDestinationUri(uri);
 
-        // get download service and enqueue file
         final DownloadManager downloadManager = (DownloadManager) currentActivityContext.getSystemService(Context.DOWNLOAD_SERVICE);
         final long downloadId = downloadManager.enqueue(request);
 
-        //set BroadcastReceiver to install app when apk file is downloaded
         BroadcastReceiver downloadCompleteBroadcastReceiver = new BroadcastReceiver() {
 
             public void onReceive(Context context, Intent intent) {
@@ -61,7 +53,6 @@ public class ApplicationVCSUtils {
             }
         };
 
-        //register receiver for when apk file download is compete
         currentActivityContext.registerReceiver(downloadCompleteBroadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
     }
 }

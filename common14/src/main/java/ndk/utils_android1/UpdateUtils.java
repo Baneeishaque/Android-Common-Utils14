@@ -73,7 +73,6 @@ public class UpdateUtils {
 
         String networkActionResponse;
         try {
-            // Network access.
             DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
             org.apache.http.client.methods.HttpPost httpPost = new org.apache.http.client.methods.HttpPost(fullVersionCheckUrl);
 
