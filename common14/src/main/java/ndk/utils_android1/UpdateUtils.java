@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class UpdateUtils {
 
-    public static int getVersionCode(Context context, String applicationTag) {
+    public static int getVersionCode(Context context, String applicationTag, boolean isGuiAvailable) {
 
         PackageManager pm = context.getPackageManager();
         try {
@@ -26,7 +26,7 @@ public class UpdateUtils {
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
 
             int versionCode = pi.versionCode;
-            LogUtils1.debugOnGui(applicationTag, "Version Code : " + versionCode, context);
+            LogUtils1.extendedDebug(applicationTag, "Version Code : " + versionCode, context, isGuiAvailable);
             return versionCode;
 
         } catch (PackageManager.NameNotFoundException ex) {
@@ -35,14 +35,14 @@ public class UpdateUtils {
         }
     }
 
-    public static float getVersionName(Context context, String applicationTag) {
+    public static float getVersionName(Context context, String applicationTag, boolean isGuiAvailable) {
 
         PackageManager pm = context.getPackageManager();
         try {
 
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
             float versionName = Float.parseFloat(pi.versionName);
-            LogUtils1.debugOnGui(applicationTag, "Version Name : " + versionName, context);
+            LogUtils1.extendedDebug(applicationTag, "Version Name : " + versionName, context, isGuiAvailable);
             return versionName;
 
         } catch (PackageManager.NameNotFoundException ex) {
@@ -51,7 +51,7 @@ public class UpdateUtils {
         }
     }
 
-    public static String[] getFlavouredServerVersion(String flavour, String fullVersionCheckUrl, String applicationName, Context currentApplicationContext) {
+    public static String[] getFlavouredServerVersion(String flavour, String fullVersionCheckUrl, String applicationName, Context currentApplicationContext, boolean isGuiAvailable) {
 
         String networkActionResponse;
         try {
@@ -64,7 +64,7 @@ public class UpdateUtils {
 
             ResponseHandler<String> basicResponseHandler = new BasicResponseHandler();
             networkActionResponse = defaultHttpClient.execute(httpPost, basicResponseHandler);
-            LogUtils1.debug(applicationName, "Network Action Response : " + networkActionResponse, currentApplicationContext);
+            LogUtils1.extendedDebug(applicationName, "Network Action Response : " + networkActionResponse, currentApplicationContext, isGuiAvailable);
             return new String[]{"0", networkActionResponse};
 
         } catch (UnsupportedEncodingException e) {
@@ -76,9 +76,9 @@ public class UpdateUtils {
         }
     }
 
-    public static String[] getServerVersion(String fullVersionCheckUrl, String applicationName, Context currentApplicationContext) {
+    public static String[] getServerVersion(String fullVersionCheckUrl, String applicationName, Context currentApplicationContext, boolean isGuiAvailable) {
 
-        LogUtils1.debugOnGui(applicationName, "URL : " + fullVersionCheckUrl, currentApplicationContext);
+        LogUtils1.extendedDebug(applicationName, "URL : " + fullVersionCheckUrl, currentApplicationContext, isGuiAvailable);
 
         String networkActionResponse;
         try {
@@ -87,7 +87,7 @@ public class UpdateUtils {
 
             ResponseHandler<String> basicResponseHandler = new BasicResponseHandler();
             networkActionResponse = defaultHttpClient.execute(httpPost, basicResponseHandler);
-            LogUtils1.debug(applicationName, "Network Action Response : " + networkActionResponse, currentApplicationContext);
+            LogUtils1.extendedDebug(applicationName, "Network Action Response : " + networkActionResponse, currentApplicationContext, isGuiAvailable);
             return new String[]{"0", networkActionResponse};
 
         } catch (UnsupportedEncodingException e) {
