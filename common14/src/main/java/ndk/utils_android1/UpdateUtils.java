@@ -18,14 +18,16 @@ import java.util.ArrayList;
 
 public class UpdateUtils {
 
-    public static int getVersionCode(Context context) {
+    public static int getVersionCode(Context context, String applicationTag) {
 
         PackageManager pm = context.getPackageManager();
         try {
 
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
-            return pi.versionCode;
 
+            int versionCode = pi.versionCode;
+            LogUtils1.debugOnGui(applicationTag, "Version Code : " + versionCode, context);
+            return versionCode;
 
         } catch (PackageManager.NameNotFoundException ex) {
 
@@ -33,13 +35,15 @@ public class UpdateUtils {
         }
     }
 
-    public static float getVersionName(Context context) {
+    public static float getVersionName(Context context, String applicationTag) {
 
         PackageManager pm = context.getPackageManager();
         try {
 
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
-            return Float.parseFloat(pi.versionName);
+            float versionName = Float.parseFloat(pi.versionName);
+            LogUtils1.debugOnGui(applicationTag, "Version Name : " + versionName, context);
+            return versionName;
 
         } catch (PackageManager.NameNotFoundException ex) {
 
