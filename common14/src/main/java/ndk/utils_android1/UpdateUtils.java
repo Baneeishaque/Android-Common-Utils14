@@ -41,6 +41,7 @@ public class UpdateUtils {
         try {
 
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+
             float versionName = Float.parseFloat(pi.versionName);
             LogUtils1.extendedDebug(applicationTag, "Version Name : " + versionName, context, isGuiAvailable);
             return versionName;
