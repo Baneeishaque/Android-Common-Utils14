@@ -37,13 +37,13 @@ public class ExceptionUtils1 {
         handleException(isGuiPresent, applicationContext, tag, getExceptionDetails(exception));
     }
 
-    public static void handleExceptionOnGui(Context applicationContext, final String tag, Exception exception) {
-
-        handleException(true, applicationContext, tag, getExceptionDetails(exception));
-    }
-
     public static void handleExceptionOnGui(Context applicationContext, final String tag, String exceptionDetails) {
 
         handleException(true, applicationContext, tag, exceptionDetails);
+    }
+
+    public static void handleExceptionOnGui(Context applicationContext, final String tag, Exception exception) {
+
+        handleExceptionOnGui(applicationContext, tag, getExceptionDetails(exception));
     }
 }
