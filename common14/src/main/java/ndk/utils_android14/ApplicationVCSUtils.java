@@ -35,7 +35,7 @@ public class ApplicationVCSUtils {
             }
         }
 
-        LogUtils1.debug(applicationName, "Update URL : " + updateUrl, currentActivityContext);
+        LogUtils1.debugOnGui(applicationName, "Update URL : " + updateUrl, currentActivityContext);
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(updateUrl));
         request.setDescription("Downloading Update...");
         request.setTitle(applicationName + " " + versionName);

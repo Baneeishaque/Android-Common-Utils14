@@ -79,7 +79,7 @@ public class NetworkUtils1 {
 
     public static void displayNetworkActionResponse(String tag, String[] networkActionResponseArray, Context currentApplicationContext) {
 
-        LogUtils1.debug(tag, "Network Action Response Array : " + Arrays.toString(networkActionResponseArray), currentApplicationContext);
+        LogUtils1.debugOnGui(tag, "Network Action Response Array : " + Arrays.toString(networkActionResponseArray), currentApplicationContext);
     }
 
     //TODO : Can ping function

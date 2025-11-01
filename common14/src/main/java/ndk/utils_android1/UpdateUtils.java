@@ -74,6 +74,7 @@ public class UpdateUtils {
 
     public static String[] getServerVersion(String fullVersionCheckUrl, String applicationName, Context currentApplicationContext) {
 
+        LogUtils1.debugOnGui(applicationName, "URL : " + fullVersionCheckUrl, currentApplicationContext);
 
         String networkActionResponse;
         try {
