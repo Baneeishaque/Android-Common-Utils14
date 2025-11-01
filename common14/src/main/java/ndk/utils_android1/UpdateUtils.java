@@ -19,11 +19,14 @@ import java.util.ArrayList;
 public class UpdateUtils {
 
     public static int getVersionCode(Context context) {
+
         PackageManager pm = context.getPackageManager();
         try {
 
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
             return pi.versionCode;
+
+
         } catch (PackageManager.NameNotFoundException ex) {
 
             return 0;
@@ -70,6 +73,7 @@ public class UpdateUtils {
     }
 
     public static String[] getServerVersion(String fullVersionCheckUrl, String applicationName, Context currentApplicationContext) {
+
 
         String networkActionResponse;
         try {
