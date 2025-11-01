@@ -10,7 +10,6 @@ import android.os.Environment;
 
 import java.io.File;
 
-import ndk.utils_android1.DebugUtils;
 import ndk.utils_android1.LogUtils1;
 import ndk.utils_android1.ToastUtils1;
 
@@ -31,10 +30,9 @@ public class ApplicationVCSUtils {
         if (file.exists()) {
             if (!file.delete()) {
 
-                LogUtils1.debug(applicationName, "Deletion failure, please clear your downloads...", currentActivityContext);
-                if (!DebugUtils.isDebugBuild(currentActivityContext)) {
-                    ToastUtils1.longToast(currentActivityContext, "Deletion failure, please clear your downloads...");
-                }
+                String DELETION_FAILURE_PLEASE_CLEAR_YOUR_DOWNLOADS = "Deletion failure, please clear your downloads...";
+                ToastUtils1.longToast(currentActivityContext, DELETION_FAILURE_PLEASE_CLEAR_YOUR_DOWNLOADS);
+                LogUtils1.debug(applicationName, DELETION_FAILURE_PLEASE_CLEAR_YOUR_DOWNLOADS, currentActivityContext);
             }
         }
 
